@@ -17,7 +17,7 @@ import { correctCountState, timeElapsedState, wrongCountState } from "../atoms/S
 export const firstLetterPressed = (e: any) => {
     if (e.key === " ") {
         setRecoil(wordCountState, (p) => p + 1);
-        console.log(getRecoil(wordCountState));
+        // console.log(getRecoil(wordCountState));
     }   
 
     if (
@@ -37,7 +37,7 @@ export const firstLetterPressed = (e: any) => {
     if (!typing){
         setRecoil(typingState, true);
         setRecoil(startDateState,Date.now());
-        console.log(getRecoil(startDateState));
+        // console.log(getRecoil(startDateState));
     }
 
     if (e.key === "Backspace") {
