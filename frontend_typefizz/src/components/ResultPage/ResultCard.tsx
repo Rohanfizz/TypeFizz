@@ -8,6 +8,7 @@ import { correctCountState, timeElapsedState } from "../../atoms/ScoreAtoms";
 import {
     gameModeState,
     timeCountState,
+    typingState,
     wordCountState,
 } from "../../atoms/UtilBarAtoms";
 import { enterFromLeft, enterFromRight } from "../../Variants/motionVariants";
@@ -42,11 +43,12 @@ function ResultCard() {
     const gameMode = getRecoil(gameModeState);
     const timeCount = getRecoil(timeCountState);
 
-    useEffect(() => {
-        if (gameMode !== 1)
-            setRecoil(timeElapsedState, (Date.now() - startDate) / 60000);
-        else setRecoil(timeElapsedState, timeCount);
-    }, [startDate]);
+    // useEffect(() => {
+    //     if (gameMode !== 1){
+    //         setRecoil(timeElapsedState, (Date.now() - startDate) / 60000);
+    //         console.log(startDate,getRecoil(timeElapsedState));
+    //     }else setRecoil(timeElapsedState, timeCount);
+    // }, [startDate]);
 
     console.log(totalWords, timeElapsed);
     return (

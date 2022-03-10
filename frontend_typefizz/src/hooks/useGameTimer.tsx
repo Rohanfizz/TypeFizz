@@ -1,7 +1,13 @@
 import { useRouter } from "next/router";
 import React, { useRef, useEffect } from "react";
 import { useRecoilState, useRecoilValue } from "recoil";
-import { currSentenceIdxState, timerState } from "../atoms/KayboardAreaStates";
+import { getRecoil, setRecoil } from "recoil-nexus";
+import {
+    currSentenceIdxState,
+    startDateState,
+    timerState,
+} from "../atoms/KayboardAreaStates";
+import { timeElapsedState } from "../atoms/ScoreAtoms";
 import {
     gameModeState,
     sentenceCountState,
@@ -11,30 +17,37 @@ import {
 
 function useGameTimer() {
     const router = useRouter();
-    const Ref = useRef(null);
+    const Ref: any = useRef(null);
     const timeCount = useRecoilValue(timeCountState);
     const [timer, setTimer] = useRecoilState(timerState);
     const [typing, setTyping] = useRecoilState(typingState);
     const gameMode = useRecoilValue(gameModeState);
     const sentenceCount = useRecoilValue(sentenceCountState);
     const currSentenceIdx = useRecoilValue(currSentenceIdxState);
+    const startDate = getRecoil(startDateState);
 
     useEffect(() => {
         if (gameMode === 1 && timer === "00:00:00" && typing) {
             setTyping(false);
+            setRecoil(timeElapsedState, timeCount);
+
             router.push("/result");
         } else if (
             gameMode === 2 &&
             sentenceCount - currSentenceIdx === 0 &&
             typing
         ) {
+            setRecoil(timeElapsedState, (Date.now() - (startDate!)) / 60000);
+            console.log(startDate, getRecoil(timeElapsedState));
             setTyping(false);
             router.push("/result");
         }
     }, [timer]);
 
-    const getTimeRemaining = (e:any) => {
-        const total = Date.parse(e) - Date.parse(new Date());
+    const getTimeRemaining = (e: any) => {
+        // const total = Date.parse(e);
+        const newDate: any = new Date();
+        const total = Date.parse(e) - Date.parse(newDate);
         const seconds = Math.floor((total / 1000) % 60);
         const minutes = Math.floor((total / 1000 / 60) % 60);
         const hours = Math.floor(((total / 1000) * 60 * 60) % 24);

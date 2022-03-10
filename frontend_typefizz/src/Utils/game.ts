@@ -12,7 +12,7 @@ import {
 } from "../atoms/KayboardAreaStates";
 import { typingState, wordCountState } from "../atoms/UtilBarAtoms";
 import { getRecoil, setRecoil } from "recoil-nexus";
-import { correctCountState, wrongCountState } from "../atoms/ScoreAtoms";
+import { correctCountState, timeElapsedState, wrongCountState } from "../atoms/ScoreAtoms";
 
 export const firstLetterPressed = (e: any) => {
     if (e.key === " ") {
@@ -83,7 +83,7 @@ export const firstLetterPressed = (e: any) => {
         setRecoil(currCharIdxState, 1);
         setRecoil(wordCountState, p=>p+1);
     }
-
+    
     // console.log(e.key);
 };
 

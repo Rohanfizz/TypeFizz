@@ -59,9 +59,9 @@ export const currCharIdxState = atom({
 //     }
 // })
 
-export const startDateState = atom<number>({
+export const startDateState = atom<number | null>({
     key: "startDateState",
-    default: Date.now(),
+    default: null,
 });
 
 // export const totalWordsState = atom({
