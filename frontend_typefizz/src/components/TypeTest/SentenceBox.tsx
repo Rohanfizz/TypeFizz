@@ -83,7 +83,7 @@ const SentenceBox = () => {
             const queryURL = `//metaphorpsum.com/sentences/${
                 gameMode === 1 ? "50" : sentenceCount.toString()
             }`;
-            const response = await fetch(queryURL);
+            const response = await fetch(queryURL,{mode: 'cors'});
             const str = await response.text();
             setKeyText((p) => str);
             setPrevSentenceIdx(-1);
