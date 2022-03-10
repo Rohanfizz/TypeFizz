@@ -22,6 +22,8 @@ import useGameTimer from "../../hooks/useGameTimer";
 import useSentences from "../../hooks/useSentences";
 import { firstLetterPressed } from "../../Utils/game";
 import axios from 'axios';
+import { motion } from "framer-motion";
+import { blinking } from "../../Variants/motionVariants";
 
 
 const prevNextSentenceCss = {
@@ -156,11 +158,15 @@ const SentenceBox = () => {
                         .map((cc, idx) => (
                             <Text
                                 textDecoration={idx===currCharIdx?'underline':'none'}
-                                color={colorArray[idx]}
+                                color={idx === currCharIdx ? 'blue.100' :colorArray[idx]}
                                 marginLeft={cc === " " ? "0rem" : 0}
                                 key={idx}
-                            >
+                            >{idx === currCharIdx && <motion.div variants={blinking} initial='hidden' animate='visible'>
                                 {cc === " " ? '\u00A0' : cc}
+                                </motion.div>}
+                                {
+                                    idx!= currCharIdx && <>{cc === " " ? '\u00A0' : cc}</>
+                                }
                             </Text>
                         ))}
 
