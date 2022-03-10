@@ -82,10 +82,12 @@ const SentenceBox = () => {
     
     useEffect(() => {
         const textFetcher = async () => {
-            const queryURL = `//metaphorpsum.com/sentences/${
+            // const queryURL = `//metaphorpsum.com/sentences/${
+            //     gameMode === 1 ? "50" : sentenceCount.toString()
+            // }`;
+            const queryURL = `https://nameless-mountain-00644.herokuapp.com/sentences/${
                 gameMode === 1 ? "50" : sentenceCount.toString()
             }`;
-
             const response = await  axios.get(queryURL);
             // console.log(responses);
             // const response = await fetch(queryURL,{mode: 'cors'});

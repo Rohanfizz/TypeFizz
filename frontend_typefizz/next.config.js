@@ -20,13 +20,13 @@ module.exports = {
     ]
   }
 };
-module.exports = {
-  async rewrites() {
-      return [
-        {
-          source: '/*',
-          destination: '/*',
-        },
-      ]
-    },
-};
+// module.exports = {
+//   async rewrites() {
+//       return [
+//         {
+//           source: '/*',
+//           destination: '/*',
+//         },
+//       ]
+//     },
+// };
