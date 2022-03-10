@@ -7,7 +7,7 @@ import {
     sentencesArrayState,
     prevSentenceIdxState,
     nextSentenceIdxState,
-    totalWordsState,
+    // totalWordsState
     startDateState,
 } from "../atoms/KayboardAreaStates";
 import { typingState, wordCountState } from "../atoms/UtilBarAtoms";
