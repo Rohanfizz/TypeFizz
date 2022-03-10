@@ -24,8 +24,8 @@ module.exports = {
   async rewrites() {
       return [
         {
-          source: '/api/:path*',
-          destination: 'https://api.example.com/:path*',
+          source: '/metaphorpsum.com/*',
+          destination: 'https://api.example.com/metaphorpsum.com/*',
         },
       ]
     },
