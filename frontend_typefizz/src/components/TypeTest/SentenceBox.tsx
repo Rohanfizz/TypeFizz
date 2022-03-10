@@ -21,6 +21,8 @@ import {
 import useGameTimer from "../../hooks/useGameTimer";
 import useSentences from "../../hooks/useSentences";
 import { firstLetterPressed } from "../../Utils/game";
+import axios from 'axios';
+
 
 const prevNextSentenceCss = {
     height: "3rem",
@@ -83,8 +85,11 @@ const SentenceBox = () => {
             const queryURL = `//metaphorpsum.com/sentences/${
                 gameMode === 1 ? "50" : sentenceCount.toString()
             }`;
-            const response = await fetch(queryURL,{mode: 'cors'});
-            const str = await response.text();
+
+            const response = await  axios.get(queryURL);
+            // console.log(responses);
+            // const response = await fetch(queryURL,{mode: 'cors'});
+            const str = await response.data;
             setKeyText((p) => str);
             setPrevSentenceIdx(-1);
             setCurrSentenceIdx(0);
