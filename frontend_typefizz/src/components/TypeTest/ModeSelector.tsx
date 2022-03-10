@@ -54,7 +54,7 @@ function ModeSelector() {
             >
                 SentenceBased
             </Button>
-            <Button
+            {/* <Button
                 isActive={gameMode === 3}
                 onClick={onWordBasedClickHandler}
                 bgColor="teal.700"
@@ -70,7 +70,7 @@ function ModeSelector() {
                 }}
             >
                 WordBased
-            </Button>
+            </Button> */}
         </ButtonGroup>
     );
 }
