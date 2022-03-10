@@ -69,3 +69,17 @@ export const logoGoToTop = {
         y: "100vw",
     },
 };
+
+export const alertDance = {
+    hidden: {
+        scale: '95%'
+    },
+    visible: {
+        scale:'100%',
+        transition:{
+            type:'tween',
+            duration: 0.2,
+            repeat: Infinity,
+        }
+    }
+}
