@@ -27,11 +27,12 @@ const containerBox = {
 };
 const headingTextArea = {
     color: "teal.400",
-    fontSize: "3xl",
+    fontSize: "200%",
+    paddingBottom:'10%'
 };
 const mainTextArea = {
     color: "teal.100",
-    fontSize: "8xl",
+    fontSize: "300%",
 };
 
 function ResultCard() {

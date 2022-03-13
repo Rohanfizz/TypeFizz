@@ -12,9 +12,10 @@ const Intro: React.FC = () => {
             <Flex
                 // border="1px"
                 // borderColor={"white"}
-                h="100%"
+                h="94%"
                 alignItems={"center"}
                 justifyContent={"center"}
+                overflowX="hidden"
             >
                 <Box>
                     <motion.div
@@ -53,9 +54,9 @@ const Intro: React.FC = () => {
                             </Link>
                         </motion.button>
                     </Flex>
-                <MadeWithLove/>
                 </Box>
             </Flex>
+                <MadeWithLove/>
         </>
     );
 };

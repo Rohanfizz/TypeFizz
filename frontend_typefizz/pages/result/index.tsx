@@ -3,6 +3,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import type { NextPage } from "next";
 import Intro from "../../src/components/Frontpage/Intro";
 import Logo from "../../src/components/Frontpage/Logo";
+import MadeWithLove from "../../src/components/ResultPage/MadeWithLove";
 import ProgressGraph from "../../src/components/ResultPage/ProgressGraph";
 import ResultCard from "../../src/components/ResultPage/ResultCard";
 
@@ -14,7 +15,9 @@ const Result: NextPage = () => {
                 <Logo />
                 <ResultCard/>
                 <ProgressGraph/>
+                <MadeWithLove />
             </Box>
+
         </>
     );
 };

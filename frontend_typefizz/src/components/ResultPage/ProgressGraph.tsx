@@ -8,7 +8,7 @@ function ProgressGraph() {
     return (
         <Flex
             w="100%"
-            h="40%"
+            h="45%"
             alignItems="center"
             flexDir="column"
             justifyContent={"center"}
@@ -23,7 +23,7 @@ function ProgressGraph() {
                     <Button bgColor="secondary">Start Again!</Button>
                 </Link>
             </motion.button>
-            <MadeWithLove />
+            
         </Flex>
     );
 }

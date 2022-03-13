@@ -47,7 +47,7 @@ const currentSentenceCss = {
     bgColor: "teal.700",
     borderRadius: "0.5rem",
     fontFace: "mono",
-    fontSize: "4xl",
+    fontSize: "200%",
     // fontSize: "3.5vw",
     display: "flex",
     alignItems: "center",

@@ -7,8 +7,8 @@ import { gameModeState, typingState } from "../../atoms/UtilBarAtoms";
 
 const scoreBox = {
     // border: "1px solid blue",
-    h: " 10rem",
-    w: "10rem",
+    h: " 70%",
+    w: "70%",
     fontFace: "mono",
     bgColor: "teal.700",
     textAlign: "center",
@@ -31,32 +31,32 @@ const ScoreCard = () => {
                 justifyContent="center"
             >
                 <Box sx={scoreBox}>
-                    <Text color="teal.400" fontSize="1.7rem">
+                    <Text color="teal.400" fontSize="100%">
                         Correct
                     </Text>
-                    <Text color="teal.100" fontSize="3.5rem">
+                    <Text color="teal.100" fontSize="210%">
                         {correctCount}
                     </Text>
-                    <Text color="teal.400" fontSize="1.2rem">
+                    <Text color="teal.400" fontSize="100%">
                         Characters
                     </Text>
                 </Box>
                 <Box sx={scoreBox}>
-                    <Text color="teal.400" fontSize="1.7rem">
+                    <Text color="teal.400" fontSize="100%">
                         Wrong
                     </Text>
-                    <Text color="teal.100" fontSize="3.5rem">
+                    <Text color="teal.100" fontSize="210%">
                         {wrongCount}
                     </Text>
-                    <Text color="teal.400" fontSize="1.2rem">
+                    <Text color="teal.400" fontSize="100%">
                         characters
                     </Text>
                 </Box>
                 <Box sx={scoreBox}>
-                    <Text color="teal.400" fontSize="1.7rem">
+                    <Text color="teal.400" fontSize="100%">
                         Accuracy
                     </Text>
-                    <Text color="teal.100" fontSize="3rem">
+                    <Text color="teal.100" fontSize="210%">
                         {(
                             (correctCount / (correctCount + wrongCount)) *
                             100
