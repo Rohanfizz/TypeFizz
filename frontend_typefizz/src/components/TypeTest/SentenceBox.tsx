@@ -83,14 +83,14 @@ const SentenceBox = () => {
 
     useEffect(() => {
         const textFetcher = async () => {
-            // const queryURL = `//metaphorpsum.com/sentences/${
-            //     gameMode === 1 ? "50" : sentenceCount.toString()
-            // }`;
-            const queryURL = `${
-                process.env.NODE_ENV === "production"
-                    ? "https://typefizzbackend.netlify.app/sentences/"
-                    : "http://localhost:8000/sentences/"
-            }${gameMode === 1 ? "50" : sentenceCount.toString()}`;
+            const queryURL = `//metaphorpsum.com/sentences/${
+                gameMode === 1 ? "50" : sentenceCount.toString()
+            }`;
+            // const queryURL = `${
+            //     process.env.NODE_ENV === "production"
+            //         ? "https://typefizzbackend.netlify.app/sentences/"
+            //         : "http://localhost:8000/sentences/"
+            // }${gameMode === 1 ? "50" : sentenceCount.toString()}`;
             const response = await axios.get(queryURL);
             // console.log(responses);
             // const response = await fetch(queryURL,{mode: 'cors'});
