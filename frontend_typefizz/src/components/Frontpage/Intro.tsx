@@ -13,19 +13,21 @@ const Intro: React.FC = () => {
                 // border="1px"
                 // borderColor={"white"}
                 h="94%"
+                w="100%"
+                m="0"
+                p="0"
                 alignItems={"center"}
                 justifyContent={"center"}
                 overflowX="hidden"
             >
                 <Box>
                     <motion.div
-                         
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                     >
                         <Logo />
                         <motion.p
-                        layoutId="intro"
+                            layoutId="intro"
                             variants={enterFromRight}
                             initial="hidden"
                             animate="visible"
@@ -35,14 +37,11 @@ const Intro: React.FC = () => {
                                 fontFamily={"mono"}
                                 fontSize={"1xl"}
                             >
-                                Get Your Hands On That Keyboard!🤌
+                                Get Your Hands On That Keyboard!🙌
                             </Text>
                         </motion.p>
                     </motion.div>
-                    <Flex
-                        justifyContent="center"
-                        p="1rem"
-                    >
+                    <Flex justifyContent="center" p="1rem">
                         <motion.button
                             initial={{ scale: 0.9 }}
                             animate={{ scale: 1 }}
@@ -56,7 +55,7 @@ const Intro: React.FC = () => {
                     </Flex>
                 </Box>
             </Flex>
-                <MadeWithLove/>
+            <MadeWithLove />
         </>
     );
 };

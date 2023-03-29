@@ -4,7 +4,7 @@ import React from "react";
 const Layout: React.FC = ({ children }) => {
     return (
         <Flex justifyContent={"center"} bgColor="back">
-            <Box w="60%" minW={"50rem"} >
+            <Box w="70%"  >
                 {children}
             </Box>
         </Flex>

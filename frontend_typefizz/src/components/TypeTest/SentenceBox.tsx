@@ -21,10 +21,10 @@ import {
 import useGameTimer from "../../hooks/useGameTimer";
 import useSentences from "../../hooks/useSentences";
 import { firstLetterPressed } from "../../Utils/game";
-import axios from 'axios';
+import axios from "axios";
 import { motion } from "framer-motion";
 import { blinking } from "../../Variants/motionVariants";
-
+import getConfig from "next/config";
 
 const prevNextSentenceCss = {
     height: "3rem",
@@ -54,8 +54,8 @@ const currentSentenceCss = {
     justifyContent: "center",
     color: "teal.100",
     textAlign: "center",
-    maxWidth:'100%',
-    flexWrap:'wrap'
+    maxWidth: "100%",
+    flexWrap: "wrap",
 };
 
 const SentenceBox = () => {
@@ -75,22 +75,23 @@ const SentenceBox = () => {
     // const colorArray = useRecoilValue(colorArrayState);
     const [colorArray, setColorArray] = useRecoilState(colorArrayState);
     const sentencesArray = useRecoilValue(sentencesArrayState);
-    const {onStartTimer} = useGameTimer();
+    const { onStartTimer } = useGameTimer();
 
-    useEffect(()=>{
-        if(typing) onStartTimer();
-    },[typing])
-    
-    
+    useEffect(() => {
+        if (typing) onStartTimer();
+    }, [typing]);
+
     useEffect(() => {
         const textFetcher = async () => {
             // const queryURL = `//metaphorpsum.com/sentences/${
             //     gameMode === 1 ? "50" : sentenceCount.toString()
             // }`;
-            const queryURL = `https://nameless-mountain-00644.herokuapp.com/sentences/${
-                gameMode === 1 ? "50" : sentenceCount.toString()
-            }`;
-            const response = await  axios.get(queryURL);
+            const queryURL = `${
+                process.env.NODE_ENV === "production"
+                    ? "https://nameless-mountain-00644.herokuapp.com/sentences/"
+                    : "http://localhost:8000/sentences/"
+            }${gameMode === 1 ? "50" : sentenceCount.toString()}`;
+            const response = await axios.get(queryURL);
             // console.log(responses);
             // const response = await fetch(queryURL,{mode: 'cors'});
             const str = await response.data;
@@ -104,14 +105,14 @@ const SentenceBox = () => {
         textFetcher();
 
         // return () => {};
-    }, [gameMode, sentenceCount,timeCount]);
+    }, [gameMode, sentenceCount, timeCount]);
 
     useEffect(() => {
         // setsentencesArray((p) => keyText.split("."));
         setColorArray((p) =>
             Array(sentencesArray[currSentenceIdx].length).fill("untouchedChar")
         );
-        
+
         document.addEventListener("keydown", firstLetterPressed);
         setisLoading(false);
         return () => {
@@ -127,6 +128,7 @@ const SentenceBox = () => {
             // border="1px solid blue"
             h="40%"
             w="100%"
+            paddingBottom={"2rem"}
         >
             <Flex
                 h="100%"
@@ -157,19 +159,31 @@ const SentenceBox = () => {
                         .split("")
                         .map((cc, idx) => (
                             <Text
-                                textDecoration={idx===currCharIdx?'underline':'none'}
-                                color={idx === currCharIdx ? 'blue.100' :colorArray[idx]}
+                                textDecoration={
+                                    idx === currCharIdx ? "underline" : "none"
+                                }
+                                color={
+                                    idx === currCharIdx
+                                        ? "blue.100"
+                                        : colorArray[idx]
+                                }
                                 marginLeft={cc === " " ? "0rem" : 0}
                                 key={idx}
-                            >{idx === currCharIdx && <motion.div variants={blinking} initial='hidden' animate='visible'>
-                                {cc === " " ? '\u00A0' : cc}
-                                </motion.div>}
-                                {
-                                    idx!= currCharIdx && <>{cc === " " ? '\u00A0' : cc}</>
-                                }
+                            >
+                                {idx === currCharIdx && (
+                                    <motion.div
+                                        variants={blinking}
+                                        initial="hidden"
+                                        animate="visible"
+                                    >
+                                        {cc === " " ? "\u00A0" : cc}
+                                    </motion.div>
+                                )}
+                                {idx != currCharIdx && (
+                                    <>{cc === " " ? "\u00A0" : cc}</>
+                                )}
                             </Text>
                         ))}
-
                 </Skeleton>
                 <Skeleton
                     key="next"
@@ -177,7 +191,6 @@ const SentenceBox = () => {
                     isLoaded={!isLoading}
                 >
                     {sentencesArray[nextSentenceIdx]}
-                
                 </Skeleton>
             </Flex>
         </Box>
