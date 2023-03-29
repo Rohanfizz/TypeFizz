@@ -88,7 +88,7 @@ const SentenceBox = () => {
             // }`;
             const queryURL = `${
                 process.env.NODE_ENV === "production"
-                    ? "https://nameless-mountain-00644.herokuapp.com/sentences/"
+                    ? "https://typefizzbackend.netlify.app/sentences/"
                     : "http://localhost:8000/sentences/"
             }${gameMode === 1 ? "50" : sentenceCount.toString()}`;
             const response = await axios.get(queryURL);
